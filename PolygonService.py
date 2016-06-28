@@ -23,7 +23,7 @@ cfg = {
 }
 
 params = {
-    "key" : "uhWrWpUhyZQy8rPfiC7X",
+    "key" : "INSERT_KEY_HERE",
     "cfg" : json.dumps(cfg)
 }
 
