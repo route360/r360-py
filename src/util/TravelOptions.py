@@ -3,6 +3,8 @@ class TravelOptions:
 
     def __init__(self):
         self.sources = []
+        self.travelTimes = []
+        self.minPolygonHoleSize = 100000000
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -30,3 +32,24 @@ class TravelOptions:
 
     def addSource(self, source):
         self.sources.append(source)
+
+    def setTravelTimes(self, travelTimes):
+        self.travelTimes = travelTimes;
+
+    def getTravelTimes(self):
+        return self.travelTimes;
+
+    def addTravelTime(self, travelTime):
+        self.travelTimes.append(source)
+
+    def setMinPolygonHoleSize(self, minPolygonHoleSize):
+        self.minPolygonHoleSize = minPolygonHoleSize
+
+    def getMinPolygonHoleSize():
+        return self.minPolygonHoleSize
+
+    def setTravelType(self, travelType):
+        self.travelType = travelType
+
+    def getTravelType(travelType):
+        return self.travelType
