@@ -51,5 +51,17 @@ class TravelOptions:
     def setTravelType(self, travelType):
         self.travelType = travelType
 
-    def getTravelType(travelType):
+    def getTravelType():
         return self.travelType
+
+    def setTravelTime(self, travelTime):
+        self.travelTime = travelTime
+
+    def getTravelTime():
+        return self.travelTime
+
+    def setTravelDate(self, travelDate):
+        self.travelDate = travelDate
+
+    def getTravelDate():
+        return self.travelDate
