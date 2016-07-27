@@ -8,7 +8,7 @@
                           [--source SOURCE] [--outputDir OUTPUTDIR]
                           [--outputFilename OUTPUTFILENAME]
     
-    convert and import raster files to postgres database
+    Query the Route360° Polygon service in python
     
     optional arguments:
       -h, --help            show this help message and exit
