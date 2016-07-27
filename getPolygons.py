@@ -14,7 +14,7 @@ def source(arg):
     return [float(x) for x in arg.split(';')]
 
 
-parser = argparse.ArgumentParser(description="convert and import raster files to postgres database")
+parser = argparse.ArgumentParser(description="Query the Route360° Polygon service in python")
 
 parser.add_argument("--serviceUrl",        type=str,    help="The URL of the Route360° API endpoint.")
 parser.add_argument("--serviceKey",        type=str,    help="Your personal key for the API.")
