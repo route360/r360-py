@@ -44,10 +44,10 @@ Install this library easily via PIP:
 
 ### Example
 
-`py getPolygons.py --travelType walk \
-                   --travelTime 1800 \
-                   --source "52.52;13.405" \
-                   --outputDir data/ \
-                   --outputFilename test.geojson \
-                   --serviceKey 'Your key here' \
+`py getPolygons.py --travelType walk \  
+                   --travelTime 1800 \  
+                   --source "52.52;13.405" \  
+                   --outputDir data/ \  
+                   --outputFilename test.geojson \  
+                   --serviceKey 'Your key here' \  
                    --serviceUrl http://service.route360.net/germany/`
