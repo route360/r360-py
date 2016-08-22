@@ -1,6 +1,11 @@
 # API-Key
 Get your API key [here ](https://developers.route360.net/apikey.html).
 
+# Installation
+Install this library easily via PIP:
+
+    pip install r360_py
+
 # r360-py - Python Library for the Route360° API
 
       usage: getPolygons.py [-h] [--serviceUrl SERVICEURL] [--serviceKey SERVICEKEY]
