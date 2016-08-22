@@ -1,13 +1,14 @@
-# API-Key
+# r360-py - Python Library for the Route360° API
+
+## API-Key
 Get your API key [here ](https://developers.route360.net/apikey.html).
 
-# Installation
+## Installation
 Install this library easily via PIP:
 
     pip install r360_py
 
-# r360-py - Python Library for the Route360° API
-
+## Usage
       usage: getPolygons.py [-h] [--serviceUrl SERVICEURL] [--serviceKey SERVICEKEY]
                           [--travelType TRAVELTYPE]
                           [--travelTimes TRAVELTIMES [TRAVELTIMES ...]]
@@ -41,6 +42,6 @@ Install this library easily via PIP:
       --outputFilename OUTPUTFILENAME
                             The the name of the file to write to   
 
-## Example call
+### Example
 
 `py getPolygons.py --travelType walk --travelTime 1800 --source "52.52;13.405" --outputDir data/ --outputFilename test.geojson --serviceKey 'Your key here' --serviceUrl http://service.route360.net/germany/`
