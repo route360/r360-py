@@ -1,10 +1,10 @@
 import json
 import argparse
-from src.util.TravelOptions import TravelOptions
-from src.util.Configuration import Configuration
-from src.rest.polygon.PolygonService import PolygonService
-from src.util.enum.PolygonSerializationType import PolygonSerializationType
-from src.util.enum.TravelType import TravelType
+from r360_py.util.TravelOptions import TravelOptions
+from r360_py.util.Configuration import Configuration
+from r360_py.rest.polygon.PolygonService import PolygonService
+from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
+from r360_py.util.enum.TravelType import TravelType
 
 def source(arg):
     # For simplity, assume arg is a pair of integers

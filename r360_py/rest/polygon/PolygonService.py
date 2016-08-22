@@ -1,7 +1,7 @@
 import json
 import requests
 import urllib.parse
-from src.util.Configuration import Configuration
+from r360_py.util.Configuration import Configuration
 
 class PolygonService:
     'This class should be used to query the polygon service'

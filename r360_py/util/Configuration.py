@@ -1,5 +1,3 @@
-# from src.util.TravelOptions import TravelOptions
-
 class Configuration:
     'This class represents a single configuration, build from traveloptions, for a request'
 
