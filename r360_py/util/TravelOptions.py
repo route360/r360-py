@@ -1,10 +1,17 @@
+from r360_py.util.Util import Util
+from r360_py.util.enum.PolygonIntersectionMode import PolygonIntersectionMode
+
 class TravelOptions:
     'This class represents the configuration for one request'
 
     def __init__(self):
         self.sources = []
         self.travelTimes = []
+        self.travelType = None
+        self.travelDate = Util.currentDate()
+        self.travelTime = Util.currentTime()
         self.minPolygonHoleSize = 100000000
+        self.intersectionMode = PolygonIntersectionMode.UNION
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -45,23 +52,29 @@ class TravelOptions:
     def setMinPolygonHoleSize(self, minPolygonHoleSize):
         self.minPolygonHoleSize = minPolygonHoleSize
 
-    def getMinPolygonHoleSize():
+    def getMinPolygonHoleSize(self):
         return self.minPolygonHoleSize
 
     def setTravelType(self, travelType):
         self.travelType = travelType
 
-    def getTravelType():
+    def getTravelType(self):
         return self.travelType
 
     def setTravelTime(self, travelTime):
         self.travelTime = travelTime
 
-    def getTravelTime():
+    def getTravelTime(self):
         return self.travelTime
 
     def setTravelDate(self, travelDate):
         self.travelDate = travelDate
 
-    def getTravelDate():
+    def getTravelDate(self):
         return self.travelDate
+
+    def setPolygonIntersectionMode(self, intersectionMode):
+        self.intersectionMode = intersectionMode
+
+    def getPolygonIntersectionMode(self):
+        return self.intersectionMode

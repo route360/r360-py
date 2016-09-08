@@ -8,4 +8,12 @@ class TravelType(Enum):
 
     @classmethod
     def parse(clazz, str):
-      return getattr(clazz, str.upper(), None)
+
+        if str is None:
+            raise Exception('Travel type: "None" not supported!')
+
+        type = getattr(clazz, str.upper(), None)
+        if type is None:
+            raise Exception('Travel type: "' + str + '" not supported!')
+
+        return type

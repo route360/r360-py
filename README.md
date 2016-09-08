@@ -51,3 +51,15 @@ Install this library easily via PIP:
                    --outputFilename test.geojson \
                    --serviceKey 'Your key here' \
                    --serviceUrl http://service.route360.net/germany/
+
+
+### Update
+    
+    http://peterdowns.com/posts/first-time-with-pypi.html
+
+    git tag 0.1 -m ""
+    git push --tags origin 
+    python setup.py register -r pypitest
+    python setup.py sdist upload -r pypitest
+    python setup.py register -r pypi
+    python setup.py sdist upload -r pypi

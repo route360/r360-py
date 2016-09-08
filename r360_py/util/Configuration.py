@@ -11,6 +11,6 @@ class Configuration:
               "intersectionMode": "union",
               "serializer": travelOptions.getPolygonSerializationType().value,
               "pointReduction": True,
-              "minPolygonHoleSize": 1000000
+              "minPolygonHoleSize": travelOptions.getMinPolygonHoleSize()
             }
         };

@@ -3,7 +3,7 @@ from setuptools import find_packages
 setup(
   name = 'r360_py',
   packages = find_packages(), 
-  version = '0.2',
+  version = '0.4',
   description = 'A python client library to query the Route360° API',
   author = 'Motion Intelligence GmbH',
   author_email = 'mail@motionintelligence.net',
