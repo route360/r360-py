@@ -19,8 +19,6 @@ if "Y" == yesOrNo:
         line = line.replace("$VERSION", str(nexttag))
         sys.stdout.write(line),
 
-    os.system("git add -A && git commit")
-
     new_tag = repo.create_tag(str(nexttag), message='Automatic deployment of new version "{0}"'.format(nexttag)) 
     repo.remotes.origin.push(new_tag)
 
