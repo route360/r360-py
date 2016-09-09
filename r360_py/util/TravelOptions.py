@@ -8,6 +8,10 @@ class TravelOptions:
         self.sources = []
         self.travelTimes = []
         self.travelType = None
+        self.bufferMeter = None
+        self.simplifyMeter = None
+        self.quadrantSegments = None
+        self.srid = None
         self.travelDate = Util.currentDate()
         self.travelTime = Util.currentTime()
         self.minPolygonHoleSize = 100000000
@@ -78,3 +82,27 @@ class TravelOptions:
 
     def getPolygonIntersectionMode(self):
         return self.intersectionMode
+
+    def setBufferMeter(self, bufferMeter):
+        self.bufferMeter = bufferMeter
+
+    def getBufferMeter(self):
+        return self.bufferMeter
+
+    def setSimplifyMeter(self, simplifyMeter):
+        self.simplifyMeter = simplifyMeter
+
+    def getSimplifyMeter(self):
+        return self.simplifyMeter
+
+    def setQuadrantSegments(self, quadrantSegments):
+        self.quadrantSegments = quadrantSegments
+
+    def getQuadrantSegments(self):
+        return self.quadrantSegments
+
+    def setSrid(self, srid):
+        self.srid = srid
+
+    def getSrid(self):
+        return self.srid
