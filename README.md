@@ -67,7 +67,7 @@ If you have multiple version of Python installed, make sure you are using the co
 
 ### Example
 
-    py getPolygons.py --travelType walk \
+    python getPolygons.py --travelType walk \
                    --travelTime 1800 \
                    --source "52.52;13.405" \
                    --outputDir data/ \
