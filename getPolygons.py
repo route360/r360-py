@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+
 import json
 import argparse
 from r360_py.util.TravelOptions import TravelOptions
@@ -13,9 +15,7 @@ def source(arg):
     # encounter a problem.
     return [float(x) for x in arg.split(';')]
 
-
-parser = argparse.ArgumentParser(description="Query the Route360° Polygon service in python", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
+parser = argparse.ArgumentParser(description="Query the Route360 Polygon service in python", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--serviceUrl",        type=str,    help="The URL of the Route360° API endpoint.")
 parser.add_argument("--serviceKey",        type=str,    help="Your personal key for the API.")
 parser.add_argument("--travelType",        type=str,    help="The travel type for the request: car, walk, bike or transit")

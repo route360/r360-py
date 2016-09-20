@@ -18,4 +18,7 @@ class PolygonService:
 
         r = requests.get(travelOptions.getServiceUrl() + 'v1/polygon', params=params)
 
+        if ( r.status_code == 403 ):
+            raise PermissionError(r.text)
+
         return json.loads(r.text)
