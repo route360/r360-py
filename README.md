@@ -41,7 +41,7 @@ deactivate
 _prompt drops '(venv)' tag, virtualenv is no longer active_
 
 ## Usage
-    usage: r360_py.cli [-h] [--time TIME] [--date DATE]
+    usage: python -m r360_py.cli [-h] [--time TIME] [--date DATE]
                        [--polygonSerializer POLYGONSERIALIZER] [--buffer BUFFER]
                        [--simplify SIMPLIFY] [--srid SRID]
                        [--quadrantSegments QUADRANTSEGMENTS] --travelTimes
@@ -50,7 +50,7 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
                        SOURCE --outputDir OUTPUTDIR --outputFilename
                        OUTPUTFILENAME
 
-    Query the Route360 Polygon service with python
+    Query the Route360 Polygon service using python
 
     optional arguments:
       -h, --help            show this help message and exit
