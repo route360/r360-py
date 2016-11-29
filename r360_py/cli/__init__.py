@@ -13,7 +13,7 @@ def source(arg):
     # encounter a problem.
     return [float(x) for x in arg.split(';')]
 
-parser = argparse.ArgumentParser(prog="r360", description="Query the Route360 Polygon service with python", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser = argparse.ArgumentParser(prog="python -m r360_py.cli", description="Query the Route360 Polygon service using python", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--time",              type=int,    help="The time in seconds of the day: 1.30 p.m. = 13 * 3600 + 30 * 60 = 48600 (transit only)", default=43200)
 parser.add_argument("--date",              type=int,    help="The date in the format YYYYMMDD, e.g.: 20160727 for the 27th of July 2016 (transit only)", default=20162707)
 parser.add_argument("--polygonSerializer", type=str,    help="The serializer for the polygons: json or geojson", default="geojson")
@@ -35,8 +35,8 @@ args = parser.parse_args()
 
 travelOptions = TravelOptions();
 travelOptions.addSource({ "id": str(args.source[0]) + ";" + str(args.source[1]), "lat" :  args.source[0],  "lng" :  args.source[1], "tm" : {  args.travelType : {
-        "date" : args.date, "time" : args.time
-    }}})
+    "date" : args.date, "time" : args.time
+}}})
 travelOptions.setServiceKey(args.serviceKey)
 travelOptions.setTravelTimes(args.travelTimes)
 travelOptions.setServiceUrl(args.serviceUrl)
