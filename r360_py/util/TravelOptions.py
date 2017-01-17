@@ -8,7 +8,7 @@ class TravelOptions:
         self.sources = []
         self.travelTimes = []
         self.travelType = None
-        self.bufferMeter = None
+        self.buffer = None
         self.simplifyMeter = None
         self.quadrantSegments = None
         self.srid = None
@@ -83,11 +83,11 @@ class TravelOptions:
     def getPolygonIntersectionMode(self):
         return self.intersectionMode
 
-    def setBufferMeter(self, bufferMeter):
-        self.bufferMeter = bufferMeter
+    def setBuffer(self, buffer):
+        self.buffer = buffer
 
-    def getBufferMeter(self):
-        return self.bufferMeter
+    def getBuffer(self):
+        return self.buffer
 
     def setSimplifyMeter(self, simplifyMeter):
         self.simplifyMeter = simplifyMeter

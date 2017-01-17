@@ -62,8 +62,8 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
       --polygonSerializer POLYGONSERIALIZER
                             The serializer for the polygons: json or geojson
                             (default: geojson)
-      --buffer BUFFER       The buffer (in meter) that should be generated around
-                            the polygons. (max 500m) (default: None)
+      --buffer BUFFER       The buffer (in srid units) that should be generated around
+                            the polygons. (default: None)
       --simplify SIMPLIFY   The threshold (in meter) that should be used for
                             Douglas-Puecker (before buffering, max 500m).
                             (default: None)
