@@ -3,7 +3,7 @@ class Configuration:
 
     @staticmethod
     def build(travelOptions):
-        
+
         polygonJson = {
           "values": travelOptions.getTravelTimes(),
           "intersectionMode": travelOptions.getPolygonIntersectionMode().value,
@@ -12,8 +12,8 @@ class Configuration:
           "minPolygonHoleSize": travelOptions.getMinPolygonHoleSize()
         }
 
-        if not travelOptions.getBufferMeter() is None:
-            polygonJson['buffer'] = travelOptions.getBufferMeter();
+        if not travelOptions.getBuffer() is None:
+            polygonJson['buffer'] = travelOptions.getBuffer();
         if not travelOptions.getSimplifyMeter() is None:
             polygonJson['simplify'] = travelOptions.getSimplifyMeter();
         if not travelOptions.getSrid() is None:
