@@ -41,7 +41,6 @@ if __name__ == '__main__':
     travelOptions.setServiceKey(args.serviceKey)
     travelOptions.setTravelTimes(args.travelTimes)
     travelOptions.setServiceUrl(args.serviceUrl)
-    travelOptions.setMinPolygonHoleSize(10000000)
     travelOptions.setTravelDate(args.date)
     travelOptions.setTravelDate(args.time)
     travelOptions.setBuffer(args.buffer)
