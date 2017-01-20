@@ -1,9 +1,9 @@
+from r360_py.rest.ServiceExecutor import ServiceExecutor
+
 if __name__ == '__main__':
     import json
     import argparse
     from r360_py.util.TravelOptions import TravelOptions
-    from r360_py.util.Configuration import Configuration
-    from r360_py.rest.polygon.PolygonService import PolygonService
     from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
     from r360_py.util.enum.TravelType import TravelType
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     travelOptions.setTravelType(TravelType.parse(args.travelType))
     travelOptions.setPolygonSerializationType(PolygonSerializationType.parse(args.polygonSerializer))
 
-    polygon = PolygonService().getPolygons(travelOptions)
+    polygon = ServiceExecutor().execute_service(travelOptions, "polygon")
 
     f = open(args.outputDir + args.outputFilename, 'w')
     f.write(json.dumps(polygon["data"]))

@@ -1,4 +1,6 @@
 from r360_py.util.Util import Util
+from r360_py.util.enum.EdgeWeightType import EdgeWeightType
+from r360_py.util.enum.PathSerializerType import PathSerializerType
 from r360_py.util.enum.PolygonIntersectionMode import PolygonIntersectionMode
 
 class TravelOptions:
@@ -6,6 +8,7 @@ class TravelOptions:
 
     def __init__(self):
         self.sources = []
+        self.targets = []
         self.travelTimes = []
         self.travelType = None
         self.buffer = None
@@ -16,6 +19,9 @@ class TravelOptions:
         self.travelTime = Util.currentTime()
         self.minPolygonHoleSize = 100000000
         self.intersectionMode = PolygonIntersectionMode.UNION
+        self.polygonSerializationType = None
+        self.pathSerializer = PathSerializerType.COMPACT_PATH_SERIALIZER
+        self.edgeWeightType = EdgeWeightType.TIME
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -43,6 +49,15 @@ class TravelOptions:
 
     def addSource(self, source):
         self.sources.append(source)
+
+    def setTargets(self, targets):
+        self.targets = targets
+
+    def getTargets(self):
+        return self.targets
+
+    def addTarget(self, target):
+        self.targets.append(target)
 
     def setTravelTimes(self, travelTimes):
         self.travelTimes = travelTimes;
@@ -106,3 +121,15 @@ class TravelOptions:
 
     def getSrid(self):
         return self.srid
+
+    def setPathSerializer(self, path_serializer):
+        self.pathSerializer = path_serializer
+
+    def getPathSerializer(self):
+        return self.pathSerializer
+
+    def getEdgeWeightType(self):
+        return self.edgeWeightType
+
+    def setEdgeWeightType(self, edge_weight_type):
+        self.edgeWeightType = edge_weight_type
