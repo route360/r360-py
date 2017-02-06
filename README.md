@@ -94,6 +94,9 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
                             The the name of the file to write to (default: None)
 
 
+### FYI
+not all capabilities are available for all plan levels. Refer to the different [plans](https://developers.route360.net/pricing/) to see the specifics.
+
 ### Example
 
     python -m r360_py.cli --travelType walk \
@@ -103,7 +106,4 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
                    --outputFilename test.geojson \
                    --serviceKey 'Your key here' \
                    --serviceUrl http://service.route360.net/germany/ \
-                   --buffer 500 \
-                   --simplify 200 \
-                   --quadrantSegments 2 \
                    --srid 4326 \
