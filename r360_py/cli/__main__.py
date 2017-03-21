@@ -42,7 +42,7 @@ if __name__ == '__main__':
     travelOptions.setTravelTimes(args.travelTimes)
     travelOptions.setServiceUrl(args.serviceUrl)
     travelOptions.setTravelDate(args.date)
-    travelOptions.setTravelDate(args.time)
+    travelOptions.setTravelTime(args.time)
     travelOptions.setBuffer(args.buffer)
     travelOptions.setSimplifyMeter(args.simplify)
     travelOptions.setSrid(args.srid)
