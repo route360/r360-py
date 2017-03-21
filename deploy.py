@@ -13,7 +13,8 @@ if "Y" == yesOrNo:
     copyfile("./setup.py.default", "./setup.py")
 
     repo    = git.Repo(".")
-    nexttag = "0." + str(int(str(repo.tags[-1]).replace("0.", "")) + 1)
+    lasttag = sorted(repo.tags, key=lambda t: t.commit.committed_date)[-1]
+    nexttag = "0." + str(int(str(lasttag).replace("0.", "")) + 1)
 
     for line in fileinput.input("./setup.py", inplace=True):
         line = line.replace("$VERSION", str(nexttag))
