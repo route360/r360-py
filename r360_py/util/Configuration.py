@@ -10,7 +10,7 @@ class Configuration:
             if 'travelType' in source.keys() and not source['travelType'] is None:
                 travelType = source['travelType']
             else:
-                travelType = travelOptions.getTravelType()
+                travelType = travelOptions.getTravelType().value
 
             source['tm'][travelType] = {}
             if travelType == 'transit' or travelType == 'biketransit':
@@ -46,7 +46,7 @@ class Configuration:
             polygonJson = {
                 "values": travelOptions.getTravelTimes(),
                 "intersectionMode": travelOptions.getPolygonIntersectionMode().value,
-                "serializer": travelOptions.getPolygonSerializationType(),
+                "serializer": travelOptions.getPolygonSerializationType().value,
                 "pointReduction": True,
                 "minPolygonHoleSize": travelOptions.getMinPolygonHoleSize()
             }

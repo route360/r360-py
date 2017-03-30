@@ -2,6 +2,7 @@ from r360_py.util.Util import Util
 from r360_py.util.enum.EdgeWeightType import EdgeWeightType
 from r360_py.util.enum.PathSerializerType import PathSerializerType
 from r360_py.util.enum.PolygonIntersectionMode import PolygonIntersectionMode
+from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
 
 class TravelOptions:
     'This class represents the configuration for one request'
@@ -19,7 +20,7 @@ class TravelOptions:
         self.travelTime = Util.currentTime()
         self.minPolygonHoleSize = 100000000
         self.intersectionMode = PolygonIntersectionMode.UNION
-        self.polygonSerializationType = 'json'
+        self.polygonSerializationType = PolygonSerializationType.JSON
         self.pathSerializer = PathSerializerType.COMPACT_PATH_SERIALIZER
         self.edgeWeightType = EdgeWeightType.TIME
         self.frameDuration = None
