@@ -19,9 +19,17 @@ class TravelOptions:
         self.travelTime = Util.currentTime()
         self.minPolygonHoleSize = 100000000
         self.intersectionMode = PolygonIntersectionMode.UNION
-        self.polygonSerializationType = None
+        self.polygonSerializationType = 'json'
         self.pathSerializer = PathSerializerType.COMPACT_PATH_SERIALIZER
         self.edgeWeightType = EdgeWeightType.TIME
+        self.frameDuration = None
+        self.reverse = None
+        self.bikeSpeed = None
+        self.bikeUphill = None
+        self.bikeDownhill = None
+        self.walkSpeed = None
+        self.walkUphill = None
+        self.walkDownhill = None
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -60,13 +68,13 @@ class TravelOptions:
         self.targets.append(target)
 
     def setTravelTimes(self, travelTimes):
-        self.travelTimes = travelTimes;
+        self.travelTimes = travelTimes
 
     def getTravelTimes(self):
-        return self.travelTimes;
+        return self.travelTimes
 
     def addTravelTime(self, travelTime):
-        self.travelTimes.append(source)
+        self.travelTimes.append(travelTime)
 
     def setMinPolygonHoleSize(self, minPolygonHoleSize):
         self.minPolygonHoleSize = minPolygonHoleSize
@@ -133,3 +141,51 @@ class TravelOptions:
 
     def setEdgeWeightType(self, edge_weight_type):
         self.edgeWeightType = edge_weight_type
+
+    def getFrameDuration(self):
+        return self.frameDuration
+
+    def setFrameDuration(self, frame_duration):
+        self.frameDuration = frame_duration
+
+    def getReverse(self):
+        return self.frameDuration
+
+    def setReverse(self, reverse):
+        self.reverse = reverse
+
+    def getBikeSpeed(self):
+        return self.bikeSpeed
+
+    def setBikeSpeed(self, bike_speed):
+        self.bikeSpeed = bike_speed
+
+    def getBikeUphill(self):
+        return self.bikeUphill
+
+    def setBikeUphill(self, bike_uphill):
+        self.bikeUphill = bike_uphill
+
+    def getBikeDownhill(self):
+        return self.bikeDownhill
+
+    def setBikeDownhill(self, bike_downhill):
+        self.bikeDownhill = bike_downhill
+
+    def getWalkSpeed(self):
+        return self.walkSpeed
+
+    def setWalkSpeed(self, walk_speed):
+        self.walkSpeed = walk_speed
+
+    def getWalkUphill(self):
+        return self.walkUphill
+
+    def setWalkUphill(self, walk_uphill):
+        self.walkUphill = walk_uphill
+
+    def getWalkDownhill(self):
+        return self.walkDownhill
+
+    def setWalkDownhill(self, walk_downhill):
+        self.walkDownhill = walk_downhill

@@ -90,3 +90,5 @@ ENV/
 .ropeproject
 MANIFEST
 setup.py
+
+testrun.py

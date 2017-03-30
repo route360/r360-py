@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    travelOptions = TravelOptions();
+    travelOptions = TravelOptions()
     travelOptions.addSource({ "id": str(args.source[0]) + ";" + str(args.source[1]), "lat" :  args.source[0],  "lng" :  args.source[1], "tm" : {  args.travelType : {
         "date" : args.date, "time" : args.time
     }}})

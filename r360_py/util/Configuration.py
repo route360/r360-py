@@ -3,27 +3,62 @@ class Configuration:
 
     @staticmethod
     def build(travelOptions):
+        sources = travelOptions.getSources()
+
+        for source in sources:
+            source['tm'] = {}
+            if 'travelType' in source.keys() and not source['travelType'] is None:
+                travelType = source['travelType']
+            else:
+                travelType = travelOptions.getTravelType()
+
+            source['tm'][travelType] = {}
+            if travelType == 'transit' or travelType == 'biketransit':
+                source['tm'][travelType]['frame'] = {}
+                source['tm'][travelType]['frame']['time'] = travelOptions.getTravelTime()
+                source['tm'][travelType]['frame']['date'] = travelOptions.getTravelDate()
+                if not travelOptions.getFrameDuration() is None:
+                    source['tm'][travelType]['frame']['duration'] = travelOptions.getFrameDuration()
+
+            if travelType == 'bike':
+                # bike specific
+                if not travelOptions.getBikeSpeed() is None:
+                    source['tm'][travelType]['speed'] = travelOptions.getBikeSpeed()
+                if not travelOptions.getBikeUphill() is None:
+                    source['tm'][travelType]['uphill'] = travelOptions.getBikeUphill()
+                if not travelOptions.getBikeDownhill() is None:
+                    source['tm'][travelType]['downhill'] = travelOptions.getBikeDownhill()
+
+            if travelType == 'walk':
+                #  walk specific
+                if not travelOptions.getWalkSpeed() is None:
+                    source['tm'][travelType]['speed'] = travelOptions.getWalkSpeed()
+                if not travelOptions.getWalkUphill() is None:
+                    source['tm'][travelType]['uphill'] = travelOptions.getWalkUphill()
+                if not travelOptions.getWalkDownhill() is None:
+                    source['tm'][travelType]['downhill'] = travelOptions.getWalkDownhill()
+
         cfg = {
-            "sources": travelOptions.getSources()
+            "sources": sources
         }
 
         if travelOptions.getTravelTimes():
             polygonJson = {
-              "values": travelOptions.getTravelTimes(),
-              "intersectionMode": travelOptions.getPolygonIntersectionMode().value,
-              "serializer": travelOptions.getPolygonSerializationType().value,
-              "pointReduction": True,
-              "minPolygonHoleSize": travelOptions.getMinPolygonHoleSize()
+                "values": travelOptions.getTravelTimes(),
+                "intersectionMode": travelOptions.getPolygonIntersectionMode().value,
+                "serializer": travelOptions.getPolygonSerializationType(),
+                "pointReduction": True,
+                "minPolygonHoleSize": travelOptions.getMinPolygonHoleSize()
             }
 
             if not travelOptions.getBuffer() is None:
-                polygonJson['buffer'] = travelOptions.getBuffer();
+                polygonJson['buffer'] = travelOptions.getBuffer()
             if not travelOptions.getSimplifyMeter() is None:
-                polygonJson['simplify'] = travelOptions.getSimplifyMeter();
+                polygonJson['simplify'] = travelOptions.getSimplifyMeter()
             if not travelOptions.getSrid() is None:
-                polygonJson['srid'] = travelOptions.getSrid();
+                polygonJson['srid'] = travelOptions.getSrid()
             if not travelOptions.getQuadrantSegments() is None:
-                polygonJson['quadrantSegments'] = travelOptions.getQuadrantSegments();
+                polygonJson['quadrantSegments'] = travelOptions.getQuadrantSegments()
 
             cfg['polygon'] = polygonJson
 
@@ -35,5 +70,8 @@ class Configuration:
 
         if not travelOptions.getEdgeWeightType() is None:
             cfg['edgeWeightType'] = travelOptions.getEdgeWeightType().value
+
+        if not travelOptions.getReverse() is None:
+            cfg['reverse'] = travelOptions.getReverse()
 
         return cfg
