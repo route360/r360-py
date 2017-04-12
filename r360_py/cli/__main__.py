@@ -1,19 +1,18 @@
+import json
+import argparse
+from r360_py.util.TravelOptions import TravelOptions
+from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
+from r360_py.util.enum.TravelType import TravelType
 from r360_py.rest.ServiceExecutor import ServiceExecutor
 
-if __name__ == '__main__':
-    import json
-    import argparse
-    from r360_py.util.TravelOptions import TravelOptions
-    from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
-    from r360_py.util.enum.TravelType import TravelType
+def source(arg):
+    # For simplity, assume arg is a pair of integers
+    # separated by a comma. If you want to do more
+    # validation, raise argparse.ArgumentError if you
+    # encounter a problem.
+    return [float(x) for x in arg.split(';')]
 
-    def source(arg):
-        # For simplity, assume arg is a pair of integers
-        # separated by a comma. If you want to do more
-        # validation, raise argparse.ArgumentError if you
-        # encounter a problem.
-        return [float(x) for x in arg.split(';')]
-
+def createParser():
     parser = argparse.ArgumentParser(prog="python -m r360_py.cli", description="Query the Route360 Polygon service using python", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--time",              type=int,    help="The time in seconds of the day: 1.30 p.m. = 13 * 3600 + 30 * 60 = 48600 (transit only)", default=43200)
     parser.add_argument("--date",              type=int,    help="The date in the format YYYYMMDD, e.g.: 20160727 for the 27th of July 2016 (transit only)", default=20162707)
@@ -22,6 +21,14 @@ if __name__ == '__main__':
     parser.add_argument("--simplify",          type=int,    help="The threshold (in meter) that should be used for Douglas-Puecker (before buffering, max 500m).", default=None)
     parser.add_argument("--srid",              type=int,    help="The target SRID (Spatial Reference System Identifier), all that are supported via PostGIS.", default=None)
     parser.add_argument("--quadrantSegments",  type=int,    help="The number of quadrant segements (max 8), see: http://postgis.net/docs/ST_Buffer.html.", default=None)
+    parser.add_argument("--frameDuration",  type=int,    help="The window (in seconds) during which connections are identified.", default=None)
+    parser.add_argument("--reverse",  type=bool,    help="Whether or not to measure from sources (default) or towards sources.", default=None)
+    parser.add_argument("--bikeSpeed",  type=float,    help="Bike speed (travelType 'bike' only).", default=None)
+    parser.add_argument("--bikeUphill",  type=float,    help=".", default=None)
+    parser.add_argument("--bikeDownhill",  type=float,    help=".", default=None)
+    parser.add_argument("--walkSpeed",  type=float,    help="Walk speed (travelType 'walk' only).", default=None)
+    parser.add_argument("--walkUphill",  type=float,    help=".", default=None)
+    parser.add_argument("--walkDownhill",  type=float,    help=".", default=None)
 
     requiredNamed = parser.add_argument_group('required named arguments')
     requiredNamed.add_argument("--travelTimes",       type=int,    help="The travel time in seconds as a list of integers.", nargs="+", required=True)
@@ -32,8 +39,9 @@ if __name__ == '__main__':
     requiredNamed.add_argument("--outputDir",         type=str,    help="The path where to write the output files", required=True)
     requiredNamed.add_argument("--outputFilename",    type=str,    help="The the name of the file to write to", required=True)
 
-    args = parser.parse_args()
+    return parser
 
+def buildTravelOptions(args):
     travelOptions = TravelOptions()
     travelOptions.addSource({ "id": str(args.source[0]) + ";" + str(args.source[1]), "lat" :  args.source[0],  "lng" :  args.source[1], "tm" : {  args.travelType : {
         "date" : args.date, "time" : args.time
@@ -50,7 +58,29 @@ if __name__ == '__main__':
     travelOptions.setTravelType(TravelType.parse(args.travelType))
     travelOptions.setPolygonSerializationType(PolygonSerializationType.parse(args.polygonSerializer))
 
-    polygon = ServiceExecutor().execute_service(travelOptions, "polygon")
+    travelOptions.setFrameDuration(args.frameDuration)
+    travelOptions.setReverse(args.reverse)
+    travelOptions.setBikeSpeed(args.bikeSpeed)
+    travelOptions.setBikeUphill(args.bikeUphill)
+    travelOptions.setBikeDownhill(args.bikeDownhill)
+    travelOptions.setWalkSpeed(args.walkSpeed)
+    travelOptions.setWalkUphill(args.walkUphill)
+    travelOptions.setWalkDownhill(args.walkDownhill)
+
+    return travelOptions
+
+def getPolygons(travelOptions):
+    polygons = ServiceExecutor().execute_service(travelOptions, "polygon")
+    return polygons
+
+def main():
+    parser = createParser()
+    args = parser.parse_args()
+    travelOptions = buildTravelOptions(args)
+    polygons = getPolygons(travelOptions)    
 
     f = open(args.outputDir + args.outputFilename, 'w')
-    f.write(json.dumps(polygon["data"]))
+    f.write(json.dumps(polygons["data"]))
+
+if __name__ == '__main__':
+    main()
