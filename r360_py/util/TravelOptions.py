@@ -150,7 +150,7 @@ class TravelOptions:
         self.frameDuration = frame_duration
 
     def getReverse(self):
-        return self.frameDuration
+        return self.reverse
 
     def setReverse(self, reverse):
         self.reverse = reverse

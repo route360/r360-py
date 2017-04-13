@@ -91,4 +91,6 @@ ENV/
 MANIFEST
 setup.py
 
-testconfig.py
+gdalwmscache/
+
+config.py
