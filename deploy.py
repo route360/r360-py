@@ -23,7 +23,7 @@ if "Y" == yesOrNo:
     new_tag = repo.create_tag(str(nexttag), message='Automatic deployment of new version "{0}"'.format(nexttag))
     repo.remotes.origin.push(new_tag)
 
-    os.system("python3.5 setup.py register -r pypitest")
-    os.system("python3.5 setup.py sdist upload -r pypitest")
-    os.system("python3.5 setup.py register -r pypi")
-    os.system("python3.5 setup.py sdist upload -r pypi")
+    os.system("python3 setup.py register -r pypitest")
+    os.system("python3 setup.py sdist upload -r pypitest")
+    os.system("python3 setup.py register -r pypi")
+    os.system("python3 setup.py sdist upload -r pypi")
