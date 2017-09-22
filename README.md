@@ -75,12 +75,12 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
                               The area threshold of a hole inside a polygon (in
                               meters squared). (default: None)
         --simplify SIMPLIFY   The threshold (in meter) that should be used for
-                              Douglas-Puecker (before buffering, max 500m).
+                              Douglas-Peucker (before buffering, max 500m).
                               (default: None)
         --srid SRID           The target SRID (Spatial Reference System Identifier),
                               all that are supported via PostGIS. (default: None)
         --quadrantSegments QUADRANTSEGMENTS
-                              The number of quadrant segements (max 8), see:
+                              The number of quadrant segments (max 8), see:
                               http://postgis.net/docs/ST_Buffer.html. (default:
                               None)
         --frameDuration FRAMEDURATION
