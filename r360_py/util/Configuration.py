@@ -71,7 +71,13 @@ class Configuration:
         if not travelOptions.getEdgeWeightType() is None:
             cfg['edgeWeightType'] = travelOptions.getEdgeWeightType().value
 
+        if not travelOptions.getMaxEdgeWeight() is None:
+            cfg['maxEdgeWeight'] = travelOptions.getMaxEdgeWeight()
+
         if not travelOptions.getReverse() is None:
             cfg['reverse'] = travelOptions.getReverse()
+
+        if not travelOptions.getDisableCache() is None:
+            cfg['disableCache'] = travelOptions.getDisableCache()
 
         return cfg

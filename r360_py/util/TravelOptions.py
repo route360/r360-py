@@ -23,6 +23,7 @@ class TravelOptions:
         self.polygonSerializationType = PolygonSerializationType.JSON
         self.pathSerializer = PathSerializerType.COMPACT_PATH_SERIALIZER
         self.edgeWeightType = EdgeWeightType.TIME
+        self.maxEdgeWeight = None
         self.frameDuration = None
         self.reverse = None
         self.bikeSpeed = None
@@ -31,6 +32,7 @@ class TravelOptions:
         self.walkSpeed = None
         self.walkUphill = None
         self.walkDownhill = None
+        self.disableCache = None
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -143,6 +145,12 @@ class TravelOptions:
     def setEdgeWeightType(self, edge_weight_type):
         self.edgeWeightType = edge_weight_type
 
+    def getMaxEdgeWeight(self):
+        return self.maxEdgeWeight
+
+    def setMaxEdgeWeight(self, max_edge_weight):
+        self.maxEdgeWeight = max_edge_weight
+
     def getFrameDuration(self):
         return self.frameDuration
 
@@ -190,3 +198,9 @@ class TravelOptions:
 
     def setWalkDownhill(self, walk_downhill):
         self.walkDownhill = walk_downhill
+
+    def getDisableCache(self):
+        return self.disableCache
+
+    def setDisableCache(self, disable_cache):
+        self.disableCache = disable_cache
