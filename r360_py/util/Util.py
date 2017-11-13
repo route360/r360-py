@@ -2,7 +2,7 @@ import datetime
 import math
 
 class Util:
-    'This class encapsulates generaly usefull methods from all sorts of domains'
+    'This class encapsulates generally useful methods from all sorts of domains'
 
     @staticmethod
     def currentDate():
