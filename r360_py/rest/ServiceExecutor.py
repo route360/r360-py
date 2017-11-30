@@ -15,7 +15,7 @@ class ServiceExecutor:
     def get_execution_time(self):
         return self.execution_time
 
-    def execute_service(self, travel_options, service):
+    def execute_service(self, travel_options, service, **request_args):
 
         params = {
             "key": travel_options.getServiceKey(),
@@ -23,7 +23,7 @@ class ServiceExecutor:
         }
 
         start_time = time.time()
-        r = requests.get(travel_options.getServiceUrl() + 'v1/' + service, params=params)
+        r = requests.get(travel_options.getServiceUrl() + 'v1/' + service, params=params, **request_args)
         self.execution_time = time.time() - start_time
 
         if r.status_code == 403:
