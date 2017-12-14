@@ -33,6 +33,7 @@ class TravelOptions:
         self.walkUphill = None
         self.walkDownhill = None
         self.disableCache = None
+        self.statisticGroupId = None
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -204,3 +205,9 @@ class TravelOptions:
 
     def setDisableCache(self, disable_cache):
         self.disableCache = disable_cache
+
+    def getStatisticGroupId(self):
+        return self.statisticGroupId
+
+    def setStatisticGroupId(self, statistic_group_id):
+        self.statisticGroupId = statistic_group_id

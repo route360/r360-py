@@ -15,6 +15,7 @@ class ServiceExecutor:
     def get_execution_time(self):
         return self.execution_time
 
+
     def execute_service(self, travel_options, service, **request_args):
 
         params = {
@@ -23,16 +24,32 @@ class ServiceExecutor:
         }
 
         start_time = time.time()
-        r = requests.get(travel_options.getServiceUrl() + 'v1/' + service, params=params, **request_args)
+        response = requests.get(travel_options.getServiceUrl() + 'v1/' + service, params=params, **request_args)
         self.execution_time = time.time() - start_time
+        return self.handle_response(service, response)
 
-        if r.status_code == 403:
-            raise PermissionError(r.text)
-        elif r.status_code != 200:
-            logging.getLogger("Service").error(r.text)
+
+    def execute_service_post(self, travel_options, service, data=None, json=None, **request_args):
+
+        params = {
+            "key": travel_options.getServiceKey()
+        }
+
+        start_time = time.time()
+        response = requests.post(travel_options.getServiceUrl() + 'v1/' + service, data=data, json=json, params=params, **request_args)
+        self.execution_time = time.time() - start_time
+        return self.handle_response(service, response)
+
+
+    def handle_response(self, service, response):
+        if response.status_code == 403:
+            raise PermissionError(response.text)
+        elif response.status_code != 200:
+            logging.getLogger("Service").error("status code: " + str(response.status_code) + ", message: " + response.text)
         else:
             if service == "route":
-                json_body = r.text.replace("null(", "").rstrip(")")
+                json_body = response.text.replace("null(", "").rstrip(")")
                 return json.loads(json_body)
             else:
-                return json.loads(r.text)
+                if (response.text != None and len(response.text) > 0):
+                    return json.loads(response.text)

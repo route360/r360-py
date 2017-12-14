@@ -80,4 +80,7 @@ class Configuration:
         if not travelOptions.getDisableCache() is None:
             cfg['disableCache'] = travelOptions.getDisableCache()
 
+        if not travelOptions.getStatisticGroupId() is None:
+            cfg['statisticGroupId'] = travelOptions.getStatisticGroupId()
+
         return cfg
