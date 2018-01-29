@@ -19,6 +19,8 @@ class Configuration:
                 source['tm'][travelType]['frame']['date'] = travelOptions.getTravelDate()
                 if not travelOptions.getFrameDuration() is None:
                     source['tm'][travelType]['frame']['duration'] = travelOptions.getFrameDuration()
+                if not travelOptions.getRecommendations() is None:
+                    source['tm'][travelType]['recommendations'] = travelOptions.getRecommendations()
 
             if travelType == 'bike':
                 # bike specific

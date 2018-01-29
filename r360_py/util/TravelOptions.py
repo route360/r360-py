@@ -34,6 +34,7 @@ class TravelOptions:
         self.walkDownhill = None
         self.disableCache = None
         self.statisticGroupId = None
+        self.recommendations = None
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -211,3 +212,9 @@ class TravelOptions:
 
     def setStatisticGroupId(self, statistic_group_id):
         self.statisticGroupId = statistic_group_id
+
+    def getRecommendations(self):
+        return self.recommendations
+
+    def setRecommendations(self, recommendations):
+        self.recommendations = recommendations
