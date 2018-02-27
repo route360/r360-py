@@ -36,7 +36,7 @@ def createParser():
     requiredNamed.add_argument("--serviceUrl",        type=str,    help="The URL of the Route360° API endpoint.", required=True)
     requiredNamed.add_argument("--serviceKey",        type=str,    help="Your personal key for the API.", required=True)
     requiredNamed.add_argument("--travelType",        type=str,    help="The travel type for the request: car, walk, bike or transit", required=True)
-    requiredNamed.add_argument("--source",            type=source, help="The source as doubles (lat,lng) separated by ';'.", required=True)
+    requiredNamed.add_argument("--source",            type=source, help="The source as doubles (lat,lng) separated by ';'.", required=True, action='append')
     requiredNamed.add_argument("--outputDir",         type=str,    help="The path where to write the output files", required=True)
     requiredNamed.add_argument("--outputFilename",    type=str,    help="The the name of the file to write to", required=True)
 
@@ -44,9 +44,13 @@ def createParser():
 
 def buildTravelOptions(args):
     travelOptions = TravelOptions()
-    travelOptions.addSource({ "id": str(args.source[0]) + ";" + str(args.source[1]), "lat" :  args.source[0],  "lng" :  args.source[1], "tm" : {  args.travelType : {
-        "date" : args.date, "time" : args.time
-    }}})
+    for source in args.source:
+        travelOptions.addSource({
+            "id" : str(source[0]) + ";" + str(source[1]),
+            "lat" : source[0],
+            "lng" : source[1],
+            "tm" : { args.travelType : { "date" : args.date, "time" : args.time }}
+        })
     travelOptions.setServiceKey(args.serviceKey)
     travelOptions.setTravelTimes(args.travelTimes)
     travelOptions.setTravelType(TravelType.parse(args.travelType))
