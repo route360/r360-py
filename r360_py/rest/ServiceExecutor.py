@@ -29,14 +29,16 @@ class ServiceExecutor:
         return self.handle_response(service, response, object_hook)
 
 
-    def execute_service_post(self, travel_options, service, data=None, json=None, object_hook=None, **request_args):
+    def execute_service_post(self, travel_options, service, object_hook=None, **request_args):
 
         params = {
             "key": travel_options.getServiceKey()
         }
 
+        data = Configuration.build(travel_options)
+
         start_time = time.time()
-        response = requests.post(travel_options.getServiceUrl() + 'v1/' + service, data=data, json=json, params=params, **request_args)
+        response = requests.post(travel_options.getServiceUrl() + 'v1/' + service, params=params, json=data, **request_args)
         self.execution_time = time.time() - start_time
         return self.handle_response(service, response, object_hook)
 
