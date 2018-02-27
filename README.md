@@ -139,8 +139,31 @@ not all capabilities are available for all plan levels. Refer to the different [
                    --serviceUrl=http://service.route360.net/germany/ \
                    --srid=4326 \
 
+
+## Library Usage
+
+Example how to use the library from Python code:
+
+    #!/usr/bin/env python3
+    from r360_py.rest.ServiceExecutor import ServiceExecutor
+    from r360_py.util.TravelOptions import TravelOptions
+    from r360_py.util.enum.TravelType import TravelType
+
+    travelOptions = TravelOptions()
+    travelOptions.setServiceKey('INSERT_YOUR_API_KEY_HERE')
+    travelOptions.setTravelType(TravelType.TRANSIT)
+    travelOptions.setServiceUrl('https://service.route360.net/westcentraleurope/')
+    travelOptions.setTravelTime(10 * 3600)
+    travelOptions.setFrameDuration(3 * 3600)
+    travelOptions.addSource({"id": "source-1", "lng": 53.5532, "lat": 10.00644})
+    travelOptions.addTarget({"id": "target-1", "lng": 53.63265, "lat": 10.00667})
+
+    response = ServiceExecutor().execute_service(travelOptions, "route")
+    print(response)
+
+
 ## Testing
 
-Using unittest and nose, api assumes py 3.x
-- rename _tests/config.py.txt_ to _tests/config.py_, add appripriate API key
+Using unit test and nose, API assumes Python 3.x
+- rename _tests/config.py.txt_ to _tests/config.py_, add appropriate API key
 - run `nosetests -v`
