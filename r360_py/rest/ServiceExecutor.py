@@ -16,7 +16,7 @@ class ServiceExecutor:
         return self.execution_time
 
 
-    def execute_service(self, travel_options, service, **request_args):
+    def execute_service(self, travel_options, service, object_hook=None, **request_args):
 
         params = {
             "key": travel_options.getServiceKey(),
@@ -26,10 +26,10 @@ class ServiceExecutor:
         start_time = time.time()
         response = requests.get(travel_options.getServiceUrl() + 'v1/' + service, params=params, **request_args)
         self.execution_time = time.time() - start_time
-        return self.handle_response(service, response)
+        return self.handle_response(service, response, object_hook)
 
 
-    def execute_service_post(self, travel_options, service, data=None, json=None, **request_args):
+    def execute_service_post(self, travel_options, service, data=None, json=None, object_hook=None, **request_args):
 
         params = {
             "key": travel_options.getServiceKey()
@@ -38,10 +38,10 @@ class ServiceExecutor:
         start_time = time.time()
         response = requests.post(travel_options.getServiceUrl() + 'v1/' + service, data=data, json=json, params=params, **request_args)
         self.execution_time = time.time() - start_time
-        return self.handle_response(service, response)
+        return self.handle_response(service, response, object_hook)
 
 
-    def handle_response(self, service, response):
+    def handle_response(self, service, response, object_hook=None):
         if response.status_code == 403:
             raise PermissionError(response.text)
         elif response.status_code != 200:
@@ -49,7 +49,7 @@ class ServiceExecutor:
         else:
             if service == "route":
                 json_body = response.text.replace("null(", "").rstrip(")")
-                return json.loads(json_body)
+                return json.loads(json_body, object_hook=object_hook)
             else:
                 if (response.text != None and len(response.text) > 0):
-                    return json.loads(response.text)
+                    return json.loads(response.text, object_hook=object_hook)
