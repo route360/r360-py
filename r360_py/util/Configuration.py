@@ -40,6 +40,11 @@ class Configuration:
                 if not travelOptions.getWalkDownhill() is None:
                     source['tm'][travelType]['downhill'] = travelOptions.getWalkDownhill()
 
+            if travelType == 'car':
+                #  car specific
+                if not travelOptions.getRushHour() is None:
+                    source['tm'][travelType]['rushHour'] = travelOptions.getRushHour()
+
         cfg = {
             "sources": sources
         }
@@ -84,5 +89,8 @@ class Configuration:
 
         if not travelOptions.getStatisticGroupId() is None:
             cfg['statisticGroupId'] = travelOptions.getStatisticGroupId()
+
+        if not travelOptions.getElevation() is None:
+            cfg['elevation'] = travelOptions.getElevation()
 
         return cfg

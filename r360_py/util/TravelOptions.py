@@ -35,6 +35,8 @@ class TravelOptions:
         self.disableCache = None
         self.statisticGroupId = None
         self.recommendations = None
+        self.elevation = None
+        self.rushHour = None
 
     def setPolygonSerializationType(self, polygonSerializationType):
         self.polygonSerializationType = polygonSerializationType
@@ -218,3 +220,15 @@ class TravelOptions:
 
     def setRecommendations(self, recommendations):
         self.recommendations = recommendations
+
+    def getElevation(self):
+        return self.elevation
+
+    def setElevation(self, elevation):
+        self.elevation = elevation
+
+    def getRushHour(self):
+        return self.rushHour
+
+    def setRushHour(self, rushHour):
+        self.rushHour = rushHour
