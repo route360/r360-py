@@ -1,5 +1,6 @@
 import json
 import argparse
+import logging
 from r360_py.util.TravelOptions import TravelOptions
 from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
 from r360_py.util.enum.TravelType import TravelType
@@ -95,6 +96,7 @@ def getPolygons(travelOptions):
     return polygons
 
 def main():
+    logging.basicConfig()
     parser = createParser()
     args = parser.parse_args()
     travelOptions = buildTravelOptions(args)
