@@ -3,6 +3,7 @@ import argparse
 from r360_py.util.TravelOptions import TravelOptions
 from r360_py.util.enum.PolygonSerializationType import PolygonSerializationType
 from r360_py.util.enum.TravelType import TravelType
+from r360_py.util.enum.EdgeWeightType import EdgeWeightType
 from r360_py.rest.ServiceExecutor import ServiceExecutor
 
 def source(arg):
@@ -17,6 +18,7 @@ def createParser():
     parser.add_argument("--time",              type=int,    help="The time in seconds of the day: 1.30 p.m. = 13 * 3600 + 30 * 60 = 48600 (transit only)", default=43200)
     parser.add_argument("--date",              type=int,    help="The date in the format YYYYMMDD, e.g.: 20160727 for the 27th of July 2016 (transit only)", default=20162707)
     parser.add_argument("--polygonSerializer", type=str,    help="The serializer for the polygons: json or geojson", default="geojson")
+    parser.add_argument("--edgeWeightType",    type=str,    help="The method by which we measure reach: time or distance", default="time")
     parser.add_argument("--buffer",            type=float,  help="The buffer (in srid units) that should be generated around the polygons.", default=None)
     parser.add_argument("--minHoleSize",       type=int,    help="The area threshold of a hole inside a polygon (in meters squared).", default=None)
     parser.add_argument("--simplify",          type=int,    help="The threshold (in meter) that should be used for Douglas-Puecker (before buffering, max 500m).", default=None)
@@ -65,6 +67,8 @@ def buildTravelOptions(args):
         travelOptions.setQuadrantSegments(args.quadrantSegments)
     if args.polygonSerializer:
         travelOptions.setPolygonSerializationType(PolygonSerializationType.parse(args.polygonSerializer))
+    if args.edgeWeightType:
+        travelOptions.setEdgeWeightType(EdgeWeightType.parse(args.edgeWeightType))
     if args.minHoleSize:
         travelOptions.setMinPolygonHoleSize(args.minHoleSize)
     if args.frameDuration:
