@@ -1,3 +1,5 @@
+# Important notice: Route360° is now called Targomo. The libraries here will no longer be maintained. We will keep them here for legacy purposes but for future use please visit: github.com/targomo/targomo-java
+
 # r360-py - Python Library for the Route360° API
 
 ## API-Key
