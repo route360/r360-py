@@ -3,7 +3,7 @@
 # r360-py - Python Library for the Route360° API
 
 ## API-Key
-Get your API key [here ](https://developers.route360.net/pricing/).
+Get your API key [here ](https://www.targomo.com/developers/pricing/).
 
 ## Installation
 ### the r360-py library uses python3
@@ -128,7 +128,7 @@ _prompt drops '(venv)' tag, virtualenv is no longer active_
 
 
 ### FYI
-not all capabilities are available for all plan levels. Refer to the different [plans](https://developers.route360.net/pricing/) to see the specifics.
+not all capabilities are available for all plan levels. Refer to the different [plans](https://www.targomo.com/developers/pricing/) to see the specifics.
 
 ### Example
 
